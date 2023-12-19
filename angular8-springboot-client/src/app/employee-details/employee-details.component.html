@@ -1,0 +1,44 @@
+<h2>Employee Details</h2> 
+
+<hr/>
+<div *ngIf="employee">
+  <div>
+    <label><b>First Name: </b></label> {{employee.firstName}}
+  </div>
+  <div>
+    <label><b>Last Name: </b></label> {{employee.lastName}}
+  </div>
+  <div>
+    <label><b>Email Id: </b></label> {{employee.emailId}}
+  </div>
+  <div>
+    <label><b>Address: </b></label> {{employee.address}}
+  </div>
+  <div>
+    <label><b>Contact: </b></label> {{employee.contact}}
+  </div>
+  <div>
+    <label><b>Department: </b></label> {{employee.department}}
+  </div>
+  <div>
+    <label><b>Salary (PerMonth): </b></label> {{employee.salary}}
+  </div> 
+  <div>
+    <label><b>Designation: </b></label> {{employee.designation}}
+  </div> 
+  <div>
+    <label><b>Select Pay Slip Data</b></label><input type="month" id="payslipdate" name="start" min="2018-03" max="{{maxDate}}" value={{currentDate}} />
+  </div> 
+</div>
+
+<br>
+<br>
+<div class="line-items">
+  <button (click)="list()" class="btn btn-primary">Back to Employee List</button><br>
+  <button (click)="download()" class="btn btn-primary">Download</button><br>
+  <button (click)="print()" class="btn btn-primary">Print</button><br>
+  
+</div>
+
+
+

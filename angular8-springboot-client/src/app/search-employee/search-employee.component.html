@@ -1,0 +1,35 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Search Employee</h2>
+  </div>
+  <div>
+    <input type="text" (keydown)="getSearchEmployee()" [(ngModel)]="searchKeyword" />
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>Contact</th>
+          <th>Department</th>
+          <th>Designation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of searchResult">
+          <td>{{employee.firstName}}</td>
+          <td>{{employee.lastName}}</td>
+          <td>{{employee.emailId}}</td>
+          <td>{{employee.address}}</td>
+          <td>{{employee.contact}}</td>
+          <td>{{employee.department}}</td>
+          <td>{{employee.designation}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

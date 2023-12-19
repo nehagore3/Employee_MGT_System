@@ -1,0 +1,75 @@
+<div class="outer-container">
+  <div class="login-container">
+    <div class="login-box">
+
+      <div class="right-panel">
+        <form class="login-form" [formGroup]="loginForm">
+          <h2>User Login</h2>
+          <!-- <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div> -->
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" class="form-control"  formControlName="username" name="username" required>
+
+            <div *ngIf="loginForm.controls['username'].invalid && (loginForm.controls['username'].dirty || loginForm.controls['username'].touched)"
+            class="error-message">
+            <div *ngIf="loginForm.controls['username'].errors?.['required']">
+                Email should not blank
+            </div>
+            <div *ngIf="loginForm.controls['username'].errors?.['pattern']">
+                Enter Valid email
+            </div>
+        </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" class="form-control"  name="password" formControlName="password" required>
+            <div *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)"
+            class="error-message">
+              <div *ngIf="loginForm.controls['password'].errors?.['required']">
+                Password should not blank
+              </div>
+              <div *ngIf="loginForm.controls['password'].errors?.['minlength']">
+                Minium 8 character required
+            </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" (click)="onSubmit()" [disabled]="!loginForm.controls['username'].valid || !loginForm.controls['password'].valid">Login</button>
+          <button class="btn btn-primary btn-block" routerLink="/home">Back</button>
+          <p class="text-center mt-3 link-text" (click)="showForgotPasswordOverlay()">Forgot password?</p>
+          <p class="text-center mt-3">Don't have an account? <a class="link-text">Create</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- "Forgot Password" Overlay -->
+  <div class="overlay" *ngIf="showForgotPassword">
+    <div class="overlay-content">
+      <h2>Forgot Password</h2>
+      <form (ngSubmit)="onForgotPasswordSubmit()">
+        <div class="form-group">
+          <label for="forgotUsername">Username</label>
+          <input type="text" id="forgotUsername" class="form-control" [(ngModel)]="changeUserName" name="forgotUsername"
+            required>
+        </div>
+        <div class="form-group">
+          <label for="forgotPassword">New Password</label>
+          <input type="password" id="forgotPassword" class="form-control" [(ngModel)]="changePassword"
+            name="forgotPassword" required>
+        </div>
+        <div class="form-group">
+          <label for="forgotConfirmPassword">Confirm New Password</label>
+          <input type="password" id="forgotConfirmPassword" class="form-control" [(ngModel)]="changeConfirmPassword"
+            name="forgotConfirmPassword" required>
+        </div>
+        <div class="btn-container">
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="button" class="btn btn-secondary" (click)="hideForgotPasswordOverlay()">Cancel</button>
+          <div *ngIf="errorMessage" class="error-message">
+            {{ errorMessage }}
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
